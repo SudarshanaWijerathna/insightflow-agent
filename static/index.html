@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InsightAgent — Autonomous Multi-App Dispatcher</title>
+  <title>InsightAgent — Autonomous Video Intelligence & Multi-App Dispatcher</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,13 +12,13 @@
   <style>
     :root {
       --bg-dark: #090d16;
-      --bg-card: rgba(18, 26, 44, 0.75);
-      --bg-card-hover: rgba(26, 38, 64, 0.85);
+      --bg-card: rgba(18, 26, 44, 0.8);
+      --bg-card-hover: rgba(26, 38, 64, 0.9);
       --border-subtle: rgba(255, 255, 255, 0.08);
       --border-accent: rgba(99, 102, 241, 0.35);
       --primary: #6366f1;
       --primary-hover: #4f46e5;
-      --primary-glow: rgba(99, 102, 241, 0.25);
+      --primary-glow: rgba(99, 102, 241, 0.3);
       --accent-cyan: #06b6d4;
       --accent-emerald: #10b981;
       --accent-amber: #f59e0b;
@@ -37,7 +37,7 @@
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, var(--bg-dark) 55%);
+      background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, var(--bg-dark) 60%);
       color: var(--text-main);
       min-height: 100vh;
       line-height: 1.5;
@@ -53,14 +53,14 @@
       filter: blur(120px);
       z-index: -1;
       pointer-events: none;
-      opacity: 0.18;
+      opacity: 0.16;
     }
     .glow-1 { top: -100px; left: -100px; background: #6366f1; }
     .glow-2 { top: 300px; right: -150px; background: #06b6d4; }
 
     header {
       border-bottom: 1px solid var(--border-subtle);
-      background: rgba(9, 13, 22, 0.8);
+      background: rgba(9, 13, 22, 0.85);
       backdrop-filter: blur(16px);
       position: sticky;
       top: 0;
@@ -68,7 +68,7 @@
     }
 
     .nav-container {
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto;
       padding: 16px 24px;
       display: flex;
@@ -85,8 +85,8 @@
     }
 
     .brand-icon {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 12px;
       background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
       display: flex;
@@ -97,7 +97,7 @@
     }
 
     .brand-text h1 {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       background: linear-gradient(to right, #ffffff, #94a3b8);
@@ -106,7 +106,7 @@
     }
 
     .brand-text p {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--accent-cyan);
       font-weight: 600;
       text-transform: uppercase;
@@ -140,8 +140,8 @@
     }
 
     .nav-tabs {
-      max-width: 1200px;
-      margin: 24px auto 0;
+      max-width: 1300px;
+      margin: 20px auto 0;
       padding: 0 24px;
       display: flex;
       gap: 8px;
@@ -175,8 +175,8 @@
     }
 
     main {
-      max-width: 1200px;
-      margin: 24px auto 0;
+      max-width: 1300px;
+      margin: 20px auto 0;
       padding: 0 24px;
     }
 
@@ -190,11 +190,11 @@
     /* Grid Layout */
     .dashboard-grid {
       display: grid;
-      grid-template-columns: 500px 1fr;
+      grid-template-columns: 520px 1fr;
       gap: 24px;
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 1024px) {
       .dashboard-grid {
         grid-template-columns: 1fr;
       }
@@ -281,14 +281,14 @@
     }
 
     .dropzone-title {
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: #ffffff;
       margin-bottom: 4px;
     }
 
     .dropzone-hint {
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       color: var(--text-muted);
     }
 
@@ -331,11 +331,18 @@
 
     .slide-thumb {
       flex: 0 0 130px;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.5);
       border: 1px solid var(--border-subtle);
       border-radius: 8px;
       overflow: hidden;
       position: relative;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .slide-thumb:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
     }
 
     .slide-thumb img {
@@ -349,7 +356,7 @@
       position: absolute;
       bottom: 4px;
       left: 4px;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(0, 0, 0, 0.8);
       color: #fff;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.65rem;
@@ -418,7 +425,7 @@
 
     .form-textarea {
       resize: vertical;
-      min-height: 140px;
+      min-height: 130px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem;
     }
@@ -456,8 +463,13 @@
       border-color: var(--border-accent);
     }
 
+    .button-group-row {
+      display: flex;
+      gap: 10px;
+    }
+
     .btn-submit {
-      width: 100%;
+      flex: 1;
       background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
       border: none;
       color: #ffffff;
@@ -486,6 +498,28 @@
       transform: none;
     }
 
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--border-accent);
+    }
+
     /* Output Section */
     .output-placeholder {
       display: flex;
@@ -510,8 +544,8 @@
     .exec-timeline {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-bottom: 24px;
+      gap: 10px;
+      margin-bottom: 20px;
     }
 
     .timeline-step {
@@ -521,8 +555,8 @@
       background: rgba(10, 15, 28, 0.65);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
-      padding: 12px 16px;
-      font-size: 0.85rem;
+      padding: 10px 14px;
+      font-size: 0.84rem;
     }
 
     .timeline-step.success {
@@ -541,7 +575,7 @@
       background: rgba(255, 255, 255, 0.08);
     }
 
-    /* Artefact cards */
+    /* Artefact tabs */
     .artefact-tabs {
       display: flex;
       gap: 6px;
@@ -572,7 +606,7 @@
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       padding: 18px;
-      max-height: 500px;
+      max-height: 520px;
       overflow-y: auto;
       font-size: 0.88rem;
     }
@@ -640,6 +674,194 @@
       display: flex;
       align-items: center;
       gap: 6px;
+    }
+
+    /* CHAT WITH VIDEO STYLES */
+    .chat-layout {
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 960px) {
+      .chat-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .video-preview-player {
+      width: 100%;
+      border-radius: var(--radius-md);
+      background: #000;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      height: 680px;
+      background: rgba(10, 15, 28, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .chat-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(18, 26, 44, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .chat-msg {
+      display: flex;
+      gap: 12px;
+      max-width: 85%;
+    }
+
+    .chat-msg.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .chat-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .chat-msg.assistant .chat-avatar {
+      background: linear-gradient(135deg, #6366f1, #06b6d4);
+      color: #fff;
+    }
+
+    .chat-msg.user .chat-avatar {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .chat-bubble {
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .chat-msg.assistant .chat-bubble {
+      background: rgba(26, 38, 64, 0.75);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+    }
+
+    .chat-msg.user .chat-bubble {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      color: #fff;
+    }
+
+    .timestamp-citation {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(99, 102, 241, 0.25);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      color: #a5b4fc;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .timestamp-citation:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .chat-suggestions {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 20px;
+      background: rgba(10, 15, 28, 0.5);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .suggestion-chip {
+      white-space: nowrap;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .suggestion-chip:hover {
+      background: rgba(99, 102, 241, 0.15);
+      border-color: var(--border-accent);
+      color: var(--text-main);
+    }
+
+    .chat-input-row {
+      display: flex;
+      padding: 14px 20px;
+      gap: 10px;
+      background: rgba(18, 26, 44, 0.85);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .chat-input {
+      flex: 1;
+      background: rgba(10, 15, 28, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.88rem;
+      padding: 10px 14px;
+    }
+
+    .chat-input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .btn-send {
+      background: var(--primary);
+      border: none;
+      color: #fff;
+      font-weight: 700;
+      padding: 0 18px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-send:hover {
+      background: var(--primary-hover);
     }
 
     /* Evaluation Benchmark Tab */
@@ -751,6 +973,9 @@
           <span>Engine: InsightFlow (Port 8000)</span>
         </div>
         <div class="badge">
+          <span style="color: #06b6d4;">🎙️ AssemblyAI STT</span>
+        </div>
+        <div class="badge">
           <span style="color: #a855f7;">✨ Gemini 2.5 Flash</span>
         </div>
       </div>
@@ -760,7 +985,8 @@
   <!-- Navigation Tabs -->
   <div class="nav-tabs">
     <button class="tab-btn active" onclick="switchTab('dispatch')">🚀 Dispatch Console</button>
-    <button class="tab-btn" onclick="switchTab('eval')">📊 Evaluation Benchmark (100%)</button>
+    <button class="tab-btn" onclick="switchTab('chat')">💬 Chat with Video (InsightChat)</button>
+    <button class="tab-btn" onclick="switchTab('eval')">📊 Benchmark Evals (100%)</button>
     <button class="tab-btn" onclick="switchTab('reliability')">🛡️ Reliability & Fallback Matrix</button>
   </div>
 
@@ -803,7 +1029,7 @@
               <input type="file" id="video-file-input" accept="video/mp4,video/webm,video/quicktime,video/x-matroska,audio/*" style="display: none;" onchange="handleFileSelect(event)">
               <div class="dropzone-icon">📹</div>
               <div class="dropzone-title">Drop your recording file here, or <span style="color: var(--primary);">Browse</span></div>
-              <div class="dropzone-hint">Supports .mp4, .mkv, .mov, .webm, .mp3 (Runs client-side pixel-diff slide analysis)</div>
+              <div class="dropzone-hint">Analyzes video length & adaptive pixel difference • Transcribes via AssemblyAI (InsightFlow)</div>
             </div>
 
             <!-- Video Info & Slide Scanner Panel -->
@@ -813,7 +1039,7 @@
                   <span style="font-size: 1.5rem;">🎬</span>
                   <div>
                     <strong id="video-filename" style="font-size: 0.88rem; color: #fff;">recording.mp4</strong>
-                    <div id="video-meta-details" style="font-size: 0.74rem; color: var(--text-muted);">Calculating duration...</div>
+                    <div id="video-meta-details" style="font-size: 0.74rem; color: var(--text-muted);">Calculating duration & sampling interval...</div>
                   </div>
                 </div>
                 <button type="button" class="btn-clear-video" onclick="clearVideoFile()">✕ Remove</button>
@@ -822,7 +1048,7 @@
               <!-- Pixel Difference Scan Progress -->
               <div id="scan-progress-box" style="background: rgba(10, 15, 28, 0.85); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 12px; margin-bottom: 12px;">
                 <div style="display: flex; justify-content: space-between; font-size: 0.76rem; margin-bottom: 6px;">
-                  <span id="scan-status-text" style="color: var(--accent-cyan); font-weight: 600;">⚡ Scanning video slide transitions with pixel difference...</span>
+                  <span id="scan-status-text" style="color: var(--accent-cyan); font-weight: 600;">⚡ Adaptive pixel-diff slide detection in progress...</span>
                   <span id="scan-pct-text" style="font-weight: 700; color: #fff;">0%</span>
                 </div>
                 <div class="progress-bar-container" style="width: 100%; height: 6px;">
@@ -830,10 +1056,25 @@
                 </div>
               </div>
 
+              <!-- AssemblyAI Transcription Status -->
+              <div id="stt-status-box" style="background: rgba(10, 15, 28, 0.85); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span id="stt-icon" style="font-size: 1.2rem;">🎙️</span>
+                  <div>
+                    <div id="stt-status-title" style="font-size: 0.82rem; font-weight: 700; color: #fff;">AssemblyAI Cloud Transcription</div>
+                    <div id="stt-status-detail" style="font-size: 0.74rem; color: var(--text-muted);">Queued to stream via InsightFlow backend...</div>
+                  </div>
+                </div>
+                <button type="button" id="btn-trigger-stt" class="btn-secondary" style="padding: 6px 12px; font-size: 0.76rem;" onclick="triggerAssemblyAITranscription()">
+                  <span>Transcribe Now</span>
+                </button>
+              </div>
+
               <!-- Slide Keyframes Strip -->
               <div>
-                <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px;">
-                  🖼️ Extracted Keyframe Slides (<span id="slide-count-badge">0</span> detected via pixel-difference):
+                <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; display: flex; justify-content: space-between;">
+                  <span>🖼️ Extracted Keyframe Slides (<span id="slide-count-badge">0</span> detected via pixel-difference):</span>
+                  <span style="font-size: 0.72rem; color: var(--accent-cyan);">Click any slide to view timestamp</span>
                 </div>
                 <div id="slides-strip" class="slides-strip">
                   <span style="font-size: 0.75rem; color: var(--text-muted); padding: 10px;">No slides extracted yet.</span>
@@ -849,7 +1090,12 @@
             </div>
 
             <div class="form-group" id="transcript-form-group">
-              <label class="form-label" for="meeting-transcript">Recording Transcript / Dialogue</label>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <label class="form-label" for="meeting-transcript" style="margin-bottom: 0;">Recording Transcript / Dialogue</label>
+                <button type="button" class="btn-secondary" style="padding: 4px 10px; font-size: 0.72rem;" onclick="generateSummaryFromInsightFlow()">
+                  <span>✨ Generate AI Summary</span>
+                </button>
+              </div>
               <textarea id="meeting-transcript" class="form-textarea" required rows="6"></textarea>
             </div>
 
@@ -871,9 +1117,11 @@
               </div>
             </div>
 
-            <button type="submit" id="btn-dispatch" class="btn-submit">
-              <span>⚡ Dispatch with InsightAgent</span>
-            </button>
+            <div class="button-group-row">
+              <button type="submit" id="btn-dispatch" class="btn-submit">
+                <span>⚡ Dispatch with InsightAgent</span>
+              </button>
+            </div>
           </form>
         </div>
 
@@ -919,7 +1167,77 @@
       </div>
     </div>
 
-    <!-- TAB 2: Evaluation Benchmark -->
+    <!-- TAB 2: Chat with Video (InsightChat) -->
+    <div id="tab-chat" class="tab-pane">
+      <div class="chat-layout">
+        <!-- Video & Slide Player Column -->
+        <div class="card">
+          <div class="card-title">📹 Video Player & Keyframe Sync</div>
+          <video id="chat-video-player" class="video-preview-player" controls playsinline>
+            Your browser does not support video playback.
+          </video>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px; display: flex; justify-content: space-between;">
+            <span id="chat-video-title">No video loaded</span>
+            <span id="chat-video-duration">00:00</span>
+          </div>
+
+          <!-- Slide Navigator for Chat -->
+          <div style="border-top: 1px solid var(--border-subtle); padding-top: 14px;">
+            <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px;">
+              🖼️ Slide Transitions (<span id="chat-slide-count">0</span> detected)
+            </div>
+            <div id="chat-slides-strip" class="slides-strip" style="max-height: 220px;">
+              <span style="font-size: 0.75rem; color: var(--text-muted); padding: 10px;">Upload a video in the Dispatch Console to view synchronized slides.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conversational RAG Chat Container -->
+        <div class="chat-container">
+          <div class="chat-header">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 1.2rem;">💬</span>
+              <div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: #fff;">InsightChat</div>
+                <div style="font-size: 0.72rem; color: var(--accent-cyan);">Multimodal Video Intelligence Engine (InsightFlow & Gemini)</div>
+              </div>
+            </div>
+            <div class="badge">
+              <div class="badge-dot"></div>
+              <span>Click timestamps to jump</span>
+            </div>
+          </div>
+
+          <!-- Messages scroll area -->
+          <div id="chat-messages-box" class="chat-messages">
+            <div class="chat-msg assistant">
+              <div class="chat-avatar">🤖</div>
+              <div class="chat-bubble">
+                Hello! I am <strong>InsightChat</strong>, connected to InsightFlow's multimodal intelligence engine.
+                <br><br>
+                Ask me anything about your recording, detected slides, or dialogue. All answers include <strong>clickable timestamps</strong> that seek the video player immediately!
+              </div>
+            </div>
+          </div>
+
+          <!-- Suggestion Chips -->
+          <div class="chat-suggestions">
+            <button type="button" class="suggestion-chip" onclick="askQuickPrompt('What are all the tangible action items and who is responsible?')">📋 What are the action items?</button>
+            <button type="button" class="suggestion-chip" onclick="askQuickPrompt('Summarize the key architectural and design decisions discussed.')">🎯 Key decisions</button>
+            <button type="button" class="suggestion-chip" onclick="askQuickPrompt('What was discussed in the first 2 minutes of the video?')">⏱️ First 2 minutes</button>
+            <button type="button" class="suggestion-chip" onclick="askQuickPrompt('Explain what visual slides were shown in this video.')">🖼️ Explain slides</button>
+          </div>
+
+          <!-- Input Row -->
+          <form class="chat-input-row" onsubmit="handleChatSubmit(event)">
+            <input type="text" id="chat-input-field" class="chat-input" placeholder="Ask a question about the video transcript or slides..." required autocomplete="off">
+            <button type="submit" id="btn-chat-send" class="btn-send">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: Evaluation Benchmark -->
     <div id="tab-eval" class="tab-pane">
       <div class="card">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
@@ -1016,7 +1334,7 @@
       </div>
     </div>
 
-    <!-- TAB 3: Architecture & Reliability -->
+    <!-- TAB 4: Architecture & Reliability -->
     <div id="tab-reliability" class="tab-pane">
       <div class="card" style="margin-bottom: 24px;">
         <div class="card-title">🛡️ Two-Tier Resilient Fallback Hierarchy</div>
@@ -1054,7 +1372,7 @@
             </tr>
             <tr>
               <td><strong>🧠 InsightFlow Engine</strong></td>
-              <td>Adapter API (<code>/agent/process</code>)</td>
+              <td>Adapter API (<code>/agent/process</code>, <code>/agent/chat</code>)</td>
               <td>LLM quota exhausted, STT timeout</td>
               <td>Rule-based heuristic extractor analyzes transcript cues directly without throwing errors.</td>
             </tr>
@@ -1065,7 +1383,7 @@
   </main>
 
   <!-- Offscreen hidden video and canvas elements for client-side slide detection -->
-  <video id="hidden-video" playsinline muted preload="auto" style="display: none;"></video>
+  <video id="hidden-video" playsinline muted preload="auto" style="position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;"></video>
   <canvas id="diff-canvas" width="320" height="180" style="display: none;"></canvas>
   <canvas id="cap-canvas" width="640" height="360" style="display: none;"></canvas>
 
@@ -1075,6 +1393,8 @@
     let currentInputMode = 'preset';
     let detectedSlides = [];
     let activeVideoFile = null;
+    let activeVideoUrl = null;
+    let chatHistory = [];
 
     // Presets data
     const PRESETS = {
@@ -1108,7 +1428,6 @@
 
       document.getElementById('preset-container-box').style.display = (mode === 'preset') ? 'block' : 'none';
       document.getElementById('video-upload-box').style.display = (mode === 'video') ? 'block' : 'none';
-      document.getElementById('transcript-form-group').style.display = (mode === 'video') ? 'none' : 'block';
 
       if (mode === 'preset') {
         loadPreset('standup');
@@ -1119,8 +1438,8 @@
 
     function loadPreset(key) {
       document.querySelectorAll('.preset-pill').forEach(p => p.classList.remove('active'));
-      if (event && event.target && event.target.classList.contains('preset-pill')) {
-        event.target.classList.add('active');
+      if (window.event && window.event.target && window.event.target.classList.contains('preset-pill')) {
+        window.event.target.classList.add('active');
       }
       const data = PRESETS[key];
       if (data) {
@@ -1158,6 +1477,7 @@
     }
 
     function formatTime(secs) {
+      if (!secs || isNaN(secs)) return '00:00';
       const m = Math.floor(secs / 60);
       const s = Math.floor(secs % 60);
       return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
@@ -1165,13 +1485,92 @@
 
     function clearVideoFile() {
       activeVideoFile = null;
+      if (activeVideoUrl) {
+        URL.revokeObjectURL(activeVideoUrl);
+        activeVideoUrl = null;
+      }
       detectedSlides = [];
       document.getElementById('video-file-input').value = '';
       document.getElementById('video-scanner-panel').style.display = 'none';
       document.getElementById('dropzone').style.display = 'block';
+      document.getElementById('slides-strip').innerHTML = '<span style="font-size: 0.75rem; color: var(--text-muted); padding: 10px;">No slides extracted yet.</span>';
+      document.getElementById('chat-slides-strip').innerHTML = '<span style="font-size: 0.75rem; color: var(--text-muted); padding: 10px;">Upload a video in the Dispatch Console to view synchronized slides.</span>';
+      document.getElementById('chat-video-title').textContent = 'No video loaded';
+      document.getElementById('chat-video-duration').textContent = '00:00';
+      document.getElementById('chat-slide-count').textContent = '0';
+      const chatVideo = document.getElementById('chat-video-player');
+      chatVideo.src = '';
     }
 
-    // ── Client-side Pixel Difference Slide Transition Detector ──────────────────
+    // ── EXACT Pixel Difference Algorithm (InsightFlow slideDetector.ts) ───────────
+    const DIFF_WIDTH = 320;
+    const DIFF_HEIGHT = 180;
+    const CAP_WIDTH = 640;
+    const CAP_HEIGHT = 360;
+    const CAP_QUALITY = 0.75;
+    const DIFF_THRESHOLD = 0.12;
+    const MAX_KEYFRAMES = 60;
+
+    /**
+     * Adaptive sampling interval based on video duration.
+     * Ported directly from InsightFlow frontend/src/utils/slideDetector.ts
+     */
+    function adaptiveSampleInterval(durationSecs) {
+      if (durationSecs < 300) return 2;    // < 5 min
+      if (durationSecs < 1200) return 5;   // 5–20 min
+      if (durationSecs < 3600) return 8;   // 20–60 min
+      if (durationSecs < 7200) return 15;  // 60–120 min
+      return 20;                           // > 120 min
+    }
+
+    /**
+     * Normalised pixel difference between two RGBA image data arrays.
+     * Max possible sum per pixel: 3 channels × 255 = 765
+     */
+    function computePixelDiff(a, b) {
+      if (a.length !== b.length) return 1;
+      let sum = 0;
+      const len = a.length;
+      for (let i = 0; i < len; i += 4) {
+        sum += Math.abs(a[i] - b[i])
+             + Math.abs(a[i + 1] - b[i + 1])
+             + Math.abs(a[i + 2] - b[i + 2]);
+      }
+      return sum / ((len / 4) * 765);
+    }
+
+    /**
+     * Seek video using fastSeek() when available, with paint delay
+     */
+    function seekTo(video, timestamp) {
+      return new Promise((resolve) => {
+        const TIMEOUT_MS = 12000;
+        let timer = setTimeout(() => {
+          cleanup();
+          resolve();
+        }, TIMEOUT_MS);
+
+        function cleanup() {
+          if (timer) { clearTimeout(timer); timer = null; }
+          video.removeEventListener('seeked', onSeeked);
+          video.removeEventListener('error', onError);
+        }
+        const onSeeked = () => { cleanup(); resolve(); };
+        const onError = () => { cleanup(); resolve(); };
+
+        video.addEventListener('seeked', onSeeked, { once: true });
+        video.addEventListener('error', onError, { once: true });
+
+        if (typeof video.fastSeek === 'function') {
+          video.fastSeek(timestamp);
+        } else {
+          video.currentTime = timestamp;
+        }
+      });
+    }
+
+    const waitPaint = (ms = 20) => new Promise(r => setTimeout(r, ms));
+
     async function processVideoFile(file) {
       activeVideoFile = file;
       detectedSlides = [];
@@ -1181,11 +1580,19 @@
       document.getElementById('video-filename').textContent = file.name;
       
       const sizeMb = (file.size / (1024 * 1024)).toFixed(1);
-      document.getElementById('video-meta-details').textContent = `${sizeMb} MB • Analyzing media...`;
+      document.getElementById('video-meta-details').textContent = `${sizeMb} MB • Analyzing duration & adaptive intervals...`;
 
-      // Set clean meeting title based on file
+      // Set clean meeting title based on filename
       const cleanName = file.name.replace(/\.[^/.]+$/, '').replace(/[_-]/g, ' ');
       document.getElementById('meeting-title').value = cleanName;
+
+      // Update player in Chat tab
+      if (activeVideoUrl) URL.revokeObjectURL(activeVideoUrl);
+      activeVideoUrl = URL.createObjectURL(file);
+
+      const chatVideo = document.getElementById('chat-video-player');
+      chatVideo.src = activeVideoUrl;
+      document.getElementById('chat-video-title').textContent = file.name;
 
       const video = document.getElementById('hidden-video');
       const diffCanvas = document.getElementById('diff-canvas');
@@ -1193,120 +1600,347 @@
       const diffCtx = diffCanvas.getContext('2d', { willReadFrequently: true });
       const capCtx = capCanvas.getContext('2d');
 
-      const url = URL.createObjectURL(file);
-      video.src = url;
+      video.src = activeVideoUrl;
+
+      // Automatically trigger AssemblyAI transcription via InsightFlow
+      triggerAssemblyAITranscription();
 
       video.onloadedmetadata = async () => {
         const duration = video.duration || 60;
-        document.getElementById('video-meta-details').textContent = `${sizeMb} MB • Duration: ${formatTime(duration)}`;
+        document.getElementById('chat-video-duration').textContent = formatTime(duration);
 
-        // Adaptive sample interval based on duration
-        let sampleInterval = 2; // seconds
-        if (duration > 3600) sampleInterval = 15;
-        else if (duration > 1200) sampleInterval = 8;
-        else if (duration > 300) sampleInterval = 5;
+        // Adaptive sample interval based on video duration
+        const interval = adaptiveSampleInterval(duration);
+        const totalSteps = Math.ceil(duration / interval);
 
-        const totalSteps = Math.min(Math.floor(duration / sampleInterval), 60); // Cap at max 60 seeks for snappy UX
-        let lastImageData = null;
+        document.getElementById('video-meta-details').textContent = 
+          `${sizeMb} MB • Duration: ${formatTime(duration)} • Adaptive Interval: ${interval}s (${totalSteps} samples)`;
+
         const slidesStrip = document.getElementById('slides-strip');
+        const chatSlidesStrip = document.getElementById('chat-slides-strip');
         slidesStrip.innerHTML = '';
+        chatSlidesStrip.innerHTML = '';
         document.getElementById('slide-count-badge').textContent = '0';
+        document.getElementById('chat-slide-count').textContent = '0';
 
-        document.getElementById('scan-status-text').textContent = '⚡ Running pixel difference detector on HTML5 canvas...';
+        document.getElementById('scan-status-text').textContent = 
+          `⚡ Running pixel difference detector (interval=${interval}s, diffThreshold=${DIFF_THRESHOLD})...`;
 
-        for (let i = 0; i < totalSteps; i++) {
-          const targetTime = i * sampleInterval;
-          await seekVideo(video, targetTime);
+        let prevDiffData = null;
+        let step = 0;
 
-          // Render to 320x180 diff canvas
-          diffCtx.drawImage(video, 0, 0, 320, 180);
-          const currentImageData = diffCtx.getImageData(0, 0, 320, 180).data;
+        for (let t = 0; t < duration && detectedSlides.length < MAX_KEYFRAMES; t += interval) {
+          try {
+            await seekTo(video, t);
+            await waitPaint(20);
 
-          let diffScore = 0;
-          if (lastImageData) {
-            let diffSum = 0;
-            const len = currentImageData.length;
-            for (let p = 0; p < len; p += 8) { // sample every 2nd pixel for speed
-              diffSum += Math.abs(currentImageData[p] - lastImageData[p]) +
-                         Math.abs(currentImageData[p+1] - lastImageData[p+1]) +
-                         Math.abs(currentImageData[p+2] - lastImageData[p+2]);
+            // Render to 320x180 diff canvas
+            diffCtx.drawImage(video, 0, 0, DIFF_WIDTH, DIFF_HEIGHT);
+            const imgData = diffCtx.getImageData(0, 0, DIFF_WIDTH, DIFF_HEIGHT).data;
+
+            // First frame is always captured as baseline slide 0; subsequent on diff spike > 0.12
+            const isSlideChange = (prevDiffData === null) || (computePixelDiff(prevDiffData, imgData) > DIFF_THRESHOLD);
+
+            if (isSlideChange) {
+              capCtx.drawImage(video, 0, 0, CAP_WIDTH, CAP_HEIGHT);
+              const jpegUrl = capCanvas.toDataURL('image/jpeg', CAP_QUALITY);
+              const diffVal = prevDiffData ? computePixelDiff(prevDiffData, imgData) : 0.0;
+              
+              const slideObj = {
+                timestamp: t,
+                timeFormatted: formatTime(t),
+                diff: diffVal.toFixed(3),
+                dataUrl: jpegUrl
+              };
+              detectedSlides.push(slideObj);
+
+              // Add thumbnail to strip
+              renderSlideThumb(slideObj, slidesStrip);
+              renderSlideThumb(slideObj, chatSlidesStrip, true);
+
+              document.getElementById('slide-count-badge').textContent = detectedSlides.length;
+              document.getElementById('chat-slide-count').textContent = detectedSlides.length;
             }
-            diffScore = diffSum / ((len / 8) * 3 * 255);
+
+            prevDiffData = new Uint8ClampedArray(imgData);
+          } catch (err) {
+            console.warn('[PixelDiff] Seek skipped at ' + t + 's:', err);
           }
 
-          // Trigger slide detection if first frame (baseline) or diff > 0.12 threshold
-          if (i === 0 || diffScore > 0.12) {
-            capCtx.drawImage(video, 0, 0, 640, 360);
-            const jpegUrl = capCanvas.toDataURL('image/jpeg', 0.8);
-            const slideObj = {
-              timestamp: targetTime,
-              timeFormatted: formatTime(targetTime),
-              diff: diffScore.toFixed(3),
-              dataUrl: jpegUrl
-            };
-            detectedSlides.push(slideObj);
-
-            // Add thumbnail to strip
-            const thumbDiv = document.createElement('div');
-            thumbDiv.className = 'slide-thumb';
-            thumbDiv.innerHTML = `
-              <img src="${jpegUrl}" alt="Slide at ${slideObj.timeFormatted}">
-              <div class="slide-thumb-badge">⏱ ${slideObj.timeFormatted}</div>
-            `;
-            slidesStrip.appendChild(thumbDiv);
-            document.getElementById('slide-count-badge').textContent = detectedSlides.length;
-          }
-
-          lastImageData = currentImageData;
-
-          // Update progress
-          const pct = Math.round(((i + 1) / totalSteps) * 100);
+          step++;
+          const pct = Math.min(Math.round((step / totalSteps) * 100), 100);
           document.getElementById('scan-progress-fill').style.width = pct + '%';
           document.getElementById('scan-pct-text').textContent = pct + '%';
         }
 
-        document.getElementById('scan-status-text').textContent = `✅ Pixel-difference scan complete! ${detectedSlides.length} visual slide transitions captured.`;
+        document.getElementById('scan-status-text').textContent = 
+          `✅ Pixel-difference scan complete! ${detectedSlides.length} slide transitions captured (adaptive ${interval}s).`;
       };
     }
 
-    function seekVideo(video, time) {
-      return new Promise((resolve) => {
-        const onSeeked = () => {
-          video.removeEventListener('seeked', onSeeked);
-          resolve();
-        };
-        video.addEventListener('seeked', onSeeked);
-        video.currentTime = time;
+    function renderSlideThumb(slideObj, container, isChat = false) {
+      const thumbDiv = document.createElement('div');
+      thumbDiv.className = 'slide-thumb';
+      thumbDiv.title = `Slide at ${slideObj.timeFormatted} (diff: ${slideObj.diff}) — Click to jump`;
+      thumbDiv.innerHTML = `
+        <img src="${slideObj.dataUrl}" alt="Slide at ${slideObj.timeFormatted}">
+        <div class="slide-thumb-badge">⏱ ${slideObj.timeFormatted}</div>
+      `;
+      thumbDiv.onclick = () => {
+        jumpToVideoTime(slideObj.timestamp);
+        if (!isChat) {
+          switchTab('chat');
+        }
+      };
+      container.appendChild(thumbDiv);
+    }
+
+    function jumpToVideoTime(seconds) {
+      const chatVideo = document.getElementById('chat-video-player');
+      if (chatVideo) {
+        chatVideo.currentTime = seconds;
+        chatVideo.play().catch(() => {});
+      }
+    }
+
+    // ── AssemblyAI Transcription via InsightFlow ─────────────────────────────────
+    async function triggerAssemblyAITranscription() {
+      if (!activeVideoFile) {
+        alert('Please select or drop a video file first.');
+        return;
+      }
+
+      const btn = document.getElementById('btn-trigger-stt');
+      btn.disabled = true;
+      btn.innerHTML = '<div class="spinner"></div>';
+
+      document.getElementById('stt-status-title').textContent = 'AssemblyAI Streaming Transcription';
+      document.getElementById('stt-status-detail').textContent = 'Uploading to AssemblyAI cloud via InsightFlow Key Pool...';
+      document.getElementById('stt-icon').textContent = '⏳';
+
+      const formData = new FormData();
+      formData.append('file', activeVideoFile);
+
+      try {
+        const resp = await fetch('/api/transcribe', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await resp.json();
+
+        if (data.status === 'completed' && data.text) {
+          document.getElementById('meeting-transcript').value = data.text;
+          document.getElementById('stt-status-title').textContent = 'AssemblyAI Transcription Complete';
+          document.getElementById('stt-status-detail').textContent = 
+            `✅ ${data.words.length} words • ${data.speakers.length || 1} speaker(s) diarized • ${data.duration_seconds.toFixed(1)}s`;
+          document.getElementById('stt-icon').textContent = '✅';
+        } else if (data.status === 'error') {
+          document.getElementById('stt-status-title').textContent = 'AssemblyAI Warning';
+          document.getElementById('stt-status-detail').textContent = data.error || 'Transcription encountered an issue. Fallback active.';
+          document.getElementById('stt-icon').textContent = '⚠️';
+        }
+      } catch (err) {
+        document.getElementById('stt-status-title').textContent = 'AssemblyAI Status';
+        document.getElementById('stt-status-detail').textContent = 'Failed to connect to InsightFlow backend: ' + err.message;
+        document.getElementById('stt-icon').textContent = '❌';
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<span>Transcribe Again</span>';
+      }
+    }
+
+    // ── Summary Generation via InsightFlow ───────────────────────────────────────
+    async function generateSummaryFromInsightFlow() {
+      const transcript = document.getElementById('meeting-transcript').value.trim();
+      const title = document.getElementById('meeting-title').value.trim() || 'Video Recording';
+
+      if (!transcript) {
+        alert('Please upload a video or provide a transcript first.');
+        return;
+      }
+
+      const originalText = document.getElementById('meeting-transcript').value;
+      const transcriptBox = document.getElementById('meeting-transcript');
+
+      try {
+        transcriptBox.value = '✨ Generating holistic summary via InsightFlow Gemini Intelligence Engine... Please wait.';
+        const resp = await fetch('/api/summarize', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: title,
+            transcript_text: transcript,
+            slides: detectedSlides
+          })
+        });
+
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        const data = await resp.json();
+
+        // Restore original transcript in input
+        transcriptBox.value = transcript;
+
+        // Switch to Output Card and render summary
+        document.getElementById('output-placeholder').style.display = 'none';
+        document.getElementById('output-results').style.display = 'block';
+        switchArtTab('notion');
+
+        document.getElementById('notion-markdown-preview').textContent = data.summary_markdown || 'Summary generated.';
+        
+        // Render Mermaid diagram if present
+        const mermaidContainer = document.getElementById('notion-mermaid-container');
+        mermaidContainer.innerHTML = '';
+        if (data.mermaid_blocks && data.mermaid_blocks.length > 0) {
+          const mDiv = document.createElement('div');
+          mDiv.className = 'mermaid';
+          mDiv.textContent = data.mermaid_blocks[0];
+          mermaidContainer.appendChild(mDiv);
+          mermaid.run();
+        }
+
+        // Render extracted action items in GitHub tab
+        const issuesContainer = document.getElementById('github-issues-list');
+        issuesContainer.innerHTML = '';
+        (data.action_items || []).forEach((item, idx) => {
+          const div = document.createElement('div');
+          div.className = 'issue-card';
+          const labels = (item.suggested_labels || ['task']).map(l => `<span class="label-tag">${l}</span>`).join('');
+          div.innerHTML = `
+            <div class="issue-header">
+              <span class="issue-title">#${idx + 1}: ${item.title}</span>
+              <span class="issue-timestamp">⏱ ${formatTime(item.timestamp)}</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">${item.description}</p>
+            <div class="issue-labels">${labels}</div>
+          `;
+          issuesContainer.appendChild(div);
+        });
+
+      } catch (e) {
+        transcriptBox.value = originalText;
+        alert('Failed to generate summary: ' + e.message);
+      }
+    }
+
+    // ── Conversational RAG Chat with Video (InsightChat) ─────────────────────────
+    async function handleChatSubmit(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById('chat-input-field');
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      input.value = '';
+      appendChatMessage('user', msg);
+
+      const transcript = document.getElementById('meeting-transcript').value || 'No transcript text available.';
+      const title = document.getElementById('meeting-title').value || 'Recorded Video';
+
+      const sendBtn = document.getElementById('btn-send');
+      sendBtn.disabled = true;
+      sendBtn.textContent = '...';
+
+      try {
+        const resp = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: msg,
+            transcript_text: transcript,
+            title: title,
+            slides: detectedSlides,
+            history: chatHistory
+          })
+        });
+
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        const data = await resp.json();
+        const reply = data.response || 'No response from intelligence engine.';
+        appendChatMessage('assistant', reply);
+
+        chatHistory.push({ role: 'user', content: msg });
+        chatHistory.push({ role: 'assistant', content: reply });
+      } catch (err) {
+        appendChatMessage('assistant', `⚠️ Error connecting to InsightFlow chat: ${err.message}`);
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.textContent = 'Send';
+      }
+    }
+
+    function askQuickPrompt(text) {
+      document.getElementById('chat-input-field').value = text;
+      handleChatSubmit();
+    }
+
+    function appendChatMessage(role, content) {
+      const container = document.getElementById('chat-messages-box');
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `chat-msg ${role}`;
+
+      const avatar = role === 'assistant' ? '🤖' : '👤';
+      
+      // Parse timestamp citations into clickable buttons: e.g. [01:23] or [12.5s]
+      let formattedContent = escapeHtml(content);
+      formattedContent = formattedContent.replace(/\[(\d{1,2}):(\d{2})\]/g, (match, m, s) => {
+        const secs = parseInt(m, 10) * 60 + parseInt(s, 10);
+        return `<span class="timestamp-citation" onclick="jumpToVideoTime(${secs})">⏱ ${m}:${s}</span>`;
       });
+      formattedContent = formattedContent.replace(/\[(\d+(\.\d+)?)s\]/g, (match, s) => {
+        const secs = parseFloat(s);
+        const formatted = formatTime(secs);
+        return `<span class="timestamp-citation" onclick="jumpToVideoTime(${secs})">⏱ ${formatted}</span>`;
+      });
+      formattedContent = formattedContent.replace(/\n/g, '<br>');
+
+      msgDiv.innerHTML = `
+        <div class="chat-avatar">${avatar}</div>
+        <div class="chat-bubble">${formattedContent}</div>
+      `;
+      container.appendChild(msgDiv);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
     }
 
     function switchTab(tabId) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-      event.currentTarget.classList.add('active');
+      if (window.event && window.event.currentTarget && window.event.currentTarget.classList.contains('tab-btn')) {
+        window.event.currentTarget.classList.add('active');
+      } else {
+        const btn = document.querySelector(`.tab-btn[onclick*="${tabId}"]`);
+        if (btn) btn.classList.add('active');
+      }
       document.getElementById('tab-' + tabId).classList.add('active');
     }
 
     function switchArtTab(artId) {
       document.querySelectorAll('.art-tab').forEach(b => b.classList.remove('active'));
-      event.currentTarget.classList.add('active');
+      if (window.event && window.event.currentTarget) {
+        window.event.currentTarget.classList.add('active');
+      }
       ['github', 'notion', 'slack'].forEach(id => {
         document.getElementById('art-view-' + id).style.display = (id === artId) ? 'block' : 'none';
       });
     }
 
-    // Form dispatch handler
+    // ── Form dispatch handler ───────────────────────────────────────────────────
     async function handleDispatch(e) {
       e.preventDefault();
       const btn = document.getElementById('btn-dispatch');
       btn.disabled = true;
-      btn.innerHTML = '<div class="spinner"></div><span>Orchestrating Workflow...</span>';
+      btn.innerHTML = '<div class="spinner"></div><span>Orchestrating Multi-App Dispatch...</span>';
 
       const title = document.getElementById('meeting-title').value;
       let transcript = document.getElementById('meeting-transcript').value;
 
-      // If video mode was used, synthesize a dialogue incorporating the slide timestamps
-      if (currentInputMode === 'video' && detectedSlides.length > 0) {
+      // If video mode was used, synthesize dialogue with slide timestamps if empty
+      if (currentInputMode === 'video' && detectedSlides.length > 0 && !transcript) {
         const slideNotes = detectedSlides.map(s => `[${s.timeFormatted}] Visual Slide Transition captured (pixel-diff: ${s.diff}) — Key discussion point & visual content presented.`).join('\n');
         transcript = `Recording analysis for "${title}":\n${slideNotes}\n\n[00:15] Presenter: Reviewing core deliverables and opening action items for team follow-up.\n[01:10] Team: Ensure all deliverables are tracked in GitHub and documented in Notion.`;
       }
