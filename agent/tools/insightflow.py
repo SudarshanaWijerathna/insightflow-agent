@@ -106,7 +106,7 @@ async def call_insightflow_pipeline(
     }
 
     try:
-        async with httpx.AsyncClient(timeout=45.0) as client:
+        async with httpx.AsyncClient(timeout=settings.INSIGHTFLOW_TIMEOUT_SECONDS) as client:
             resp = await client.post(url, json=payload, headers=headers)
             if resp.status_code == 200:
                 data = resp.json()

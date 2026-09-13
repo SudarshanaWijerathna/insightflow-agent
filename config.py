@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     # InsightFlow Intelligence Engine
     INSIGHTFLOW_API_URL: str = "http://localhost:8000"
     INSIGHTFLOW_AGENT_KEY: str = "insightflow-agent-secret-key"
+    INSIGHTFLOW_TIMEOUT_SECONDS: float = 8.0
 
     # Notion
     NOTION_API_KEY: str = ""
