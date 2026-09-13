@@ -1,0 +1,10 @@
+{
+  "id": "scenario_05",
+  "name": "Quick Ad-hoc Standup",
+  "category": "quick_sync",
+  "title": "Marketing & Docs Quick Alignment",
+  "expected_target_apps": ["notion", "github", "slack"],
+  "expected_min_action_items": 1,
+  "expected_labels": ["documentation", "release"],
+  "transcript_text": "[00:00] Emma: Hey Jack, just a quick 2-minute sync on the v1.2 release notes.\n[00:20] Jack: Everything looks ready. I just need to update the API migration guide in the repository documentation to explain the new agent endpoint headers.\n[00:45] Emma: Awesome! File an issue for that in GitHub, record the changelog in Notion, and post a quick heads up in #general on Slack when finished.\n[01:05] Jack: Done, will have it done in thirty minutes!"
+}

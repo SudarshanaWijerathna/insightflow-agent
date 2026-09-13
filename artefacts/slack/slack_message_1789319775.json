@@ -1,0 +1,56 @@
+{
+  "channel": "#general",
+  "text": "\ud83c\udf99\ufe0f InsightAgent Digest: CS301 Lecture 14: Shortest Paths and Dijkstra Algorithm",
+  "blocks": [
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": "\ud83c\udf99\ufe0f InsightAgent Digest: CS301 Lecture 14: Shortest Paths and Dijkstra Algorithm",
+        "emoji": true
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*Executive Summary:*\n# CS301 Lecture 14: Shortest Paths and Dijkstra Algorithm\n\n## Summary\n[00:00] Professor Smith: Welcome everyone. Today we are exploring shortest path algorithms, specifically Dijkstra's algorithm and comparing it with Breadth-First Search.\n[02:15] Professor Smith: Remember, Dijkstra relies on a min-priority queue and non-negative edge weights. If edge weights are negative, we must use the Bellman-Ford algorithm instead.\n[08:30] Professor Smith: Take a look at the whiteboard diagram: Vertex A connects to B with weight 4, and to C with weight 2. We greedily relax edges until all vertices are vis"
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "\ud83d\udccb *1 Action Items* were extracted and dispatched."
+      }
+    },
+    {
+      "type": "actions",
+      "elements": [
+        {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "\ud83d\udcd6 View Notion Notes",
+            "emoji": true
+          },
+          "url": "https://notion.so/insightflow/CS301-Lecture-14-Shortest-Paths-and-Dijkstra-Algorithm",
+          "style": "primary"
+        }
+      ]
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "\u26a1 *InsightAgent* Multi-App Autonomous Dispatcher \u2022 Powered by InsightFlow & Gemini"
+        }
+      ]
+    }
+  ],
+  "created_at": "2026-09-13T22:46:15.722024"
+}

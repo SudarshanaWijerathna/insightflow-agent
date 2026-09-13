@@ -1,0 +1,56 @@
+{
+  "channel": "#general",
+  "text": "\ud83c\udf99\ufe0f InsightAgent Digest: Backend Team Sprint Sync #42",
+  "blocks": [
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": "\ud83c\udf99\ufe0f InsightAgent Digest: Backend Team Sprint Sync #42",
+        "emoji": true
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*Executive Summary:*\n# Backend Team Sprint Sync #42\n\n## Summary\n[00:05] Alice: Good morning team. Let's do a quick sync on our sprint goals.\n[00:15] Bob: I completed the user authentication refactor yesterday. Today I will begin optimizing the PostgreSQL indexes on the transactions table because query latency jumped to 450ms.\n[00:45] Alice: Great Bob, please open a GitHub issue to track the PostgreSQL indexing task with P1 priority.\n[01:05] Charlie: I investigated the Redis cache eviction issue. It turns out our TTL settings were set too low. I will fix the Redis TTL configuration and deploy to staging this aftern"
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "\ud83d\udccb *1 Action Items* were extracted and dispatched."
+      }
+    },
+    {
+      "type": "actions",
+      "elements": [
+        {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "\ud83d\udcd6 View Notion Notes",
+            "emoji": true
+          },
+          "url": "https://notion.so/insightflow/Backend-Team-Sprint-Sync-42",
+          "style": "primary"
+        }
+      ]
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "\u26a1 *InsightAgent* Multi-App Autonomous Dispatcher \u2022 Powered by InsightFlow & Gemini"
+        }
+      ]
+    }
+  ],
+  "created_at": "2026-09-13T22:46:13.420517"
+}

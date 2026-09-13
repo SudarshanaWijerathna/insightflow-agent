@@ -1,0 +1,10 @@
+{
+  "id": "scenario_03",
+  "name": "Product Design & UX Critique",
+  "category": "design_review",
+  "title": "Onboarding Redesign UX Review",
+  "expected_target_apps": ["notion", "github", "slack"],
+  "expected_min_action_items": 3,
+  "expected_labels": ["frontend", "ux", "onboarding"],
+  "transcript_text": "[00:10] Maya (Lead Designer): Thanks for joining everyone. We are reviewing the new 3-step onboarding flow for InsightFlow.\n[00:40] David (PM): The dropoff rate on step 2 was 34%. Users feel overwhelmed by the permission prompt for microphone access.\n[01:15] Maya: Let's change the copy to explain that audio is processed locally and securely. Action item for David: write the updated explanatory microcopy by tomorrow noon.\n[02:00] Leo (Frontend Dev): I will implement a skip button for step 2 so users can explore sample notes before committing permissions. I'll open a GitHub issue for the skip button component.\n[02:45] Maya: Also Leo, can you update the progress bar component to use a smooth CSS transition instead of jumping abruptly?\n[03:20] David: Great. Let's document these UX changes in the Product Specs page on Notion and ping the #product channel in Slack when the PR is ready."
+}

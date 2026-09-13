@@ -1,0 +1,56 @@
+{
+  "channel": "#general",
+  "text": "\ud83c\udf99\ufe0f InsightAgent Digest: InsightFlow Architecture & Reliability Sync",
+  "blocks": [
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": "\ud83c\udf99\ufe0f InsightAgent Digest: InsightFlow Architecture & Reliability Sync",
+        "emoji": true
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*Executive Summary:*\n# InsightFlow Architecture & Reliability Sync\n\n## Summary\n[00:00] Alice: Welcome to the InsightFlow Architecture Sync.\n[00:20] Bob: I investigated the AssemblyAI key rotation bug. The fix is to add backoff retries when all slots are occupied.\n[00:50] Alice: Great Bob, open a GitHub issue with high priority for the AssemblyAI backoff queue.\n[01:15] Charlie: I will update the Notion integration documentation to show how webhook fallbacks work.\n[01:40] Alice: Thanks team. Please broadcast our sprint progress to #general on Slack...."
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "\ud83d\udccb *1 Action Items* were extracted and dispatched."
+      }
+    },
+    {
+      "type": "actions",
+      "elements": [
+        {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "\ud83d\udcd6 View Notion Notes",
+            "emoji": true
+          },
+          "url": "https://notion.so/insightflow/InsightFlow-Architecture--Reliability-Sync",
+          "style": "primary"
+        }
+      ]
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "\u26a1 *InsightAgent* Multi-App Autonomous Dispatcher \u2022 Powered by InsightFlow & Gemini"
+        }
+      ]
+    }
+  ],
+  "created_at": "2026-09-13T22:46:03.601863"
+}

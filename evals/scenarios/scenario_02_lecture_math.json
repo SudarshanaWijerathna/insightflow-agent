@@ -1,0 +1,10 @@
+{
+  "id": "scenario_02",
+  "name": "CS Lecture: Graph Traversal & Dijkstra",
+  "category": "lecture",
+  "title": "CS301 Lecture 14: Shortest Paths and Dijkstra Algorithm",
+  "expected_target_apps": ["notion", "github", "slack"],
+  "expected_min_action_items": 2,
+  "expected_labels": ["homework", "algorithms", "study-guide"],
+  "transcript_text": "[00:00] Professor Smith: Welcome everyone. Today we are exploring shortest path algorithms, specifically Dijkstra's algorithm and comparing it with Breadth-First Search.\n[02:15] Professor Smith: Remember, Dijkstra relies on a min-priority queue and non-negative edge weights. If edge weights are negative, we must use the Bellman-Ford algorithm instead.\n[08:30] Professor Smith: Take a look at the whiteboard diagram: Vertex A connects to B with weight 4, and to C with weight 2. We greedily relax edges until all vertices are visited.\n[14:10] Professor Smith: For your homework assignment due this Friday at 11:59 PM: implement Dijkstra's algorithm using a binary heap in Python and benchmark it against a grid graph.\n[15:20] Student: Professor, should we submit the homework via GitHub classroom or canvas?\n[15:30] Professor Smith: Submit via GitHub Classroom, and be sure to include unit tests covering disconnected components. TA Sarah will hold office hours on Thursday.\n[16:00] Professor Smith: Please ensure these lecture notes and the homework specification are posted to our Notion class workspace and announced on Slack #cs301."
+}

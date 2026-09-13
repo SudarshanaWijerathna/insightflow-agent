@@ -1,0 +1,56 @@
+{
+  "channel": "#general",
+  "text": "\ud83c\udf99\ufe0f InsightAgent Digest: Onboarding Redesign UX Review",
+  "blocks": [
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": "\ud83c\udf99\ufe0f InsightAgent Digest: Onboarding Redesign UX Review",
+        "emoji": true
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*Executive Summary:*\n# Onboarding Redesign UX Review\n\n## Summary\n[00:10] Maya (Lead Designer): Thanks for joining everyone. We are reviewing the new 3-step onboarding flow for InsightFlow.\n[00:40] David (PM): The dropoff rate on step 2 was 34%. Users feel overwhelmed by the permission prompt for microphone access.\n[01:15] Maya: Let's change the copy to explain that audio is processed locally and securely. Action item for David: write the updated explanatory microcopy by tomorrow noon.\n[02:00] Leo (Frontend Dev): I will implement a skip button for step 2 so users can explore sample notes before committing permissio"
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "\ud83d\udccb *1 Action Items* were extracted and dispatched."
+      }
+    },
+    {
+      "type": "actions",
+      "elements": [
+        {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "\ud83d\udcd6 View Notion Notes",
+            "emoji": true
+          },
+          "url": "https://notion.so/insightflow/Onboarding-Redesign-UX-Review",
+          "style": "primary"
+        }
+      ]
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "\u26a1 *InsightAgent* Multi-App Autonomous Dispatcher \u2022 Powered by InsightFlow & Gemini"
+        }
+      ]
+    }
+  ],
+  "created_at": "2026-09-13T22:46:18.018207"
+}

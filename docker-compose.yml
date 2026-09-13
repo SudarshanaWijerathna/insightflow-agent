@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  insightflow-agent:
+    build: .
+    container_name: insightflow-agent
+    ports:
+      - "8010:8010"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - INSIGHTFLOW_API_URL=${INSIGHTFLOW_API_URL:-http://host.docker.internal:8000}
+      - INSIGHTFLOW_AGENT_KEY=${INSIGHTFLOW_AGENT_KEY:-insightflow-agent-secret-key}
+      - NOTION_API_KEY=${NOTION_API_KEY}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - MOCK_INTEGRATIONS_IF_UNCONFIGURED=true
+    volumes:
+      - ./artefacts:/app/artefacts

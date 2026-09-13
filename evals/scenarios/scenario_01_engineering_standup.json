@@ -1,0 +1,10 @@
+{
+  "id": "scenario_01",
+  "name": "Engineering Sprint Standup",
+  "category": "standup",
+  "title": "Backend Team Sprint Sync #42",
+  "expected_target_apps": ["notion", "github", "slack"],
+  "expected_min_action_items": 3,
+  "expected_labels": ["backend", "database", "api"],
+  "transcript_text": "[00:05] Alice: Good morning team. Let's do a quick sync on our sprint goals.\n[00:15] Bob: I completed the user authentication refactor yesterday. Today I will begin optimizing the PostgreSQL indexes on the transactions table because query latency jumped to 450ms.\n[00:45] Alice: Great Bob, please open a GitHub issue to track the PostgreSQL indexing task with P1 priority.\n[01:05] Charlie: I investigated the Redis cache eviction issue. It turns out our TTL settings were set too low. I will fix the Redis TTL configuration and deploy to staging this afternoon.\n[01:30] Alice: Excellent. Also, we noticed the webhook notification endpoint fails when receiving empty payloads. Charlie, can you add a validation schema for the incoming webhook payload?\n[01:50] Bob: I can review your PR when ready Charlie.\n[02:10] Alice: Perfect. Let's document our architecture decision on Redis TTL in Notion and post this recap to #engineering in Slack. Meeting adjourned!"
+}

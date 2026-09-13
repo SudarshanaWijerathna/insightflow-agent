@@ -1,0 +1,56 @@
+{
+  "channel": "#general",
+  "text": "\ud83c\udf99\ufe0f InsightAgent Digest: Incident 2026-09-12 Postmortem: Production Auth Outage",
+  "blocks": [
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": "\ud83c\udf99\ufe0f InsightAgent Digest: Incident 2026-09-12 Postmortem: Production Auth Outage",
+        "emoji": true
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*Executive Summary:*\n# Incident 2026-09-12 Postmortem: Production Auth Outage\n\n## Summary\n[00:00] Sarah (SRE): Incident postmortem for yesterday's 22-minute auth service disruption.\n[00:30] Kevin (Security): The root cause was an expired signing certificate on the OAuth proxy that was not caught by automated health checks.\n[01:10] Sarah: First action item: Kevin will add a cert-manager alerting rule in Prometheus to trigger a P0 alert 14 days before certificate expiration.\n[01:50] Kevin: Understood. Second action item: we need an automated key rotation script in Terraform so cert renewals do not require manual sec"
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "\ud83d\udccb *1 Action Items* were extracted and dispatched."
+      }
+    },
+    {
+      "type": "actions",
+      "elements": [
+        {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "\ud83d\udcd6 View Notion Notes",
+            "emoji": true
+          },
+          "url": "https://notion.so/insightflow/Incident-2026-09-12-Postmortem-Production-Auth-Outage",
+          "style": "primary"
+        }
+      ]
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "\u26a1 *InsightAgent* Multi-App Autonomous Dispatcher \u2022 Powered by InsightFlow & Gemini"
+        }
+      ]
+    }
+  ],
+  "created_at": "2026-09-13T22:46:20.306311"
+}

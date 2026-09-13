@@ -1,0 +1,10 @@
+{
+  "id": "scenario_04",
+  "name": "Incident Postmortem & Bug Triage",
+  "category": "postmortem",
+  "title": "Incident 2026-09-12 Postmortem: Production Auth Outage",
+  "expected_target_apps": ["notion", "github", "slack"],
+  "expected_min_action_items": 4,
+  "expected_labels": ["security", "auth", "infra", "p0"],
+  "transcript_text": "[00:00] Sarah (SRE): Incident postmortem for yesterday's 22-minute auth service disruption.\n[00:30] Kevin (Security): The root cause was an expired signing certificate on the OAuth proxy that was not caught by automated health checks.\n[01:10] Sarah: First action item: Kevin will add a cert-manager alerting rule in Prometheus to trigger a P0 alert 14 days before certificate expiration.\n[01:50] Kevin: Understood. Second action item: we need an automated key rotation script in Terraform so cert renewals do not require manual secret deployment.\n[02:30] Liam (Backend): Third action item: I will update the backend auth middleware to gracefully fallback to cache verification during temporary proxy downtime.\n[03:10] Sarah: Fourth action item: Update our runbook in Notion with the exact disaster recovery commands and share the postmortem summary to #incidents on Slack."
+}
