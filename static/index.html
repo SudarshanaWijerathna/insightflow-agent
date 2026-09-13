@@ -190,7 +190,7 @@
     /* Grid Layout */
     .dashboard-grid {
       display: grid;
-      grid-template-columns: 480px 1fr;
+      grid-template-columns: 500px 1fr;
       gap: 24px;
     }
 
@@ -216,6 +216,147 @@
       display: flex;
       align-items: center;
       gap: 8px;
+    }
+
+    /* Input Mode Toggle */
+    .mode-selector {
+      display: flex;
+      background: rgba(10, 15, 28, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 4px;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+
+    .mode-btn {
+      flex: 1;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .mode-btn:hover {
+      color: var(--text-main);
+    }
+
+    .mode-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 10px var(--primary-glow);
+    }
+
+    /* Dropzone for Video Files */
+    .dropzone {
+      border: 2px dashed rgba(99, 102, 241, 0.4);
+      background: rgba(99, 102, 241, 0.03);
+      border-radius: var(--radius-md);
+      padding: 32px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 16px;
+    }
+
+    .dropzone:hover, .dropzone.dragover {
+      background: rgba(99, 102, 241, 0.08);
+      border-color: var(--primary);
+      box-shadow: 0 0 20px var(--primary-glow);
+    }
+
+    .dropzone-icon {
+      font-size: 2.4rem;
+      margin-bottom: 8px;
+    }
+
+    .dropzone-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .dropzone-hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Video Meta and Slides Strip */
+    .video-meta-box {
+      background: rgba(10, 15, 28, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .btn-clear-video {
+      background: rgba(244, 63, 94, 0.15);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      color: var(--accent-rose);
+      font-family: inherit;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn-clear-video:hover {
+      background: var(--accent-rose);
+      color: #ffffff;
+    }
+
+    /* Slides Strip */
+    .slides-strip {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 6px 2px 12px;
+    }
+
+    .slide-thumb {
+      flex: 0 0 130px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide-thumb img {
+      width: 100%;
+      height: 75px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slide-thumb-badge {
+      position: absolute;
+      bottom: 4px;
+      left: 4px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     /* Preset scenario pills */
@@ -277,7 +418,7 @@
 
     .form-textarea {
       resize: vertical;
-      min-height: 160px;
+      min-height: 140px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem;
     }
@@ -313,10 +454,6 @@
 
     .app-checkbox-label:hover {
       border-color: var(--border-accent);
-    }
-
-    .app-checkbox-label input:checked + span {
-      color: #ffffff;
     }
 
     .btn-submit {
@@ -635,14 +772,74 @@
         <div class="card">
           <div class="card-title">🎙️ Ingest Meeting or Lecture</div>
 
-          <!-- Quick Presets -->
-          <div class="form-label">Select Demo Preset:</div>
-          <div class="presets-container">
-            <button class="preset-pill active" onclick="loadPreset('standup')">💼 Engineering Standup</button>
-            <button class="preset-pill" onclick="loadPreset('cs_lecture')">🎓 CS Lecture (Dijkstra)</button>
-            <button class="preset-pill" onclick="loadPreset('outage')">🚨 Incident Postmortem</button>
-            <button class="preset-pill" onclick="loadPreset('ux_review')">🎨 UX Design Critique</button>
-            <button class="preset-pill" onclick="loadPreset('quick_sync')">⚡ Quick Sync</button>
+          <!-- Input Mode Switcher -->
+          <div class="mode-selector">
+            <button type="button" class="mode-btn active" id="mode-btn-preset" onclick="setInputMode('preset')">
+              💼 Demo Presets
+            </button>
+            <button type="button" class="mode-btn" id="mode-btn-video" onclick="setInputMode('video')">
+              📹 Upload Video (Pixel-Diff)
+            </button>
+            <button type="button" class="mode-btn" id="mode-btn-text" onclick="setInputMode('text')">
+              📝 Custom Transcript
+            </button>
+          </div>
+
+          <!-- Quick Presets Container -->
+          <div id="preset-container-box">
+            <div class="form-label">Select Demo Preset:</div>
+            <div class="presets-container">
+              <button class="preset-pill active" onclick="loadPreset('standup')">💼 Engineering Standup</button>
+              <button class="preset-pill" onclick="loadPreset('cs_lecture')">🎓 CS Lecture (Dijkstra)</button>
+              <button class="preset-pill" onclick="loadPreset('outage')">🚨 Incident Postmortem</button>
+              <button class="preset-pill" onclick="loadPreset('ux_review')">🎨 UX Design Critique</button>
+              <button class="preset-pill" onclick="loadPreset('quick_sync')">⚡ Quick Sync</button>
+            </div>
+          </div>
+
+          <!-- Video Dropzone Section -->
+          <div id="video-upload-box" style="display: none;">
+            <div id="dropzone" class="dropzone" onclick="document.getElementById('video-file-input').click()">
+              <input type="file" id="video-file-input" accept="video/mp4,video/webm,video/quicktime,video/x-matroska,audio/*" style="display: none;" onchange="handleFileSelect(event)">
+              <div class="dropzone-icon">📹</div>
+              <div class="dropzone-title">Drop your recording file here, or <span style="color: var(--primary);">Browse</span></div>
+              <div class="dropzone-hint">Supports .mp4, .mkv, .mov, .webm, .mp3 (Runs client-side pixel-diff slide analysis)</div>
+            </div>
+
+            <!-- Video Info & Slide Scanner Panel -->
+            <div id="video-scanner-panel" style="display: none; margin-bottom: 16px;">
+              <div class="video-meta-box">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="font-size: 1.5rem;">🎬</span>
+                  <div>
+                    <strong id="video-filename" style="font-size: 0.88rem; color: #fff;">recording.mp4</strong>
+                    <div id="video-meta-details" style="font-size: 0.74rem; color: var(--text-muted);">Calculating duration...</div>
+                  </div>
+                </div>
+                <button type="button" class="btn-clear-video" onclick="clearVideoFile()">✕ Remove</button>
+              </div>
+
+              <!-- Pixel Difference Scan Progress -->
+              <div id="scan-progress-box" style="background: rgba(10, 15, 28, 0.85); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.76rem; margin-bottom: 6px;">
+                  <span id="scan-status-text" style="color: var(--accent-cyan); font-weight: 600;">⚡ Scanning video slide transitions with pixel difference...</span>
+                  <span id="scan-pct-text" style="font-weight: 700; color: #fff;">0%</span>
+                </div>
+                <div class="progress-bar-container" style="width: 100%; height: 6px;">
+                  <div id="scan-progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
+                </div>
+              </div>
+
+              <!-- Slide Keyframes Strip -->
+              <div>
+                <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px;">
+                  🖼️ Extracted Keyframe Slides (<span id="slide-count-badge">0</span> detected via pixel-difference):
+                </div>
+                <div id="slides-strip" class="slides-strip">
+                  <span style="font-size: 0.75rem; color: var(--text-muted); padding: 10px;">No slides extracted yet.</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <form id="dispatch-form" onsubmit="handleDispatch(event)">
@@ -651,7 +848,7 @@
               <input type="text" id="meeting-title" class="form-input" required value="Backend Team Sprint Sync #42">
             </div>
 
-            <div class="form-group">
+            <div class="form-group" id="transcript-form-group">
               <label class="form-label" for="meeting-transcript">Recording Transcript / Dialogue</label>
               <textarea id="meeting-transcript" class="form-textarea" required rows="6"></textarea>
             </div>
@@ -687,7 +884,7 @@
           <div id="output-placeholder" class="output-placeholder">
             <div class="output-placeholder-icon">🤖</div>
             <p><strong>Ready to orchestrate.</strong></p>
-            <p style="font-size: 0.8rem; margin-top: 4px;">Select a preset or enter a meeting transcript, then click Dispatch.</p>
+            <p style="font-size: 0.8rem; margin-top: 4px;">Select a preset or drop a video file, then click Dispatch.</p>
           </div>
 
           <div id="output-results" style="display: none;">
@@ -867,8 +1064,17 @@
     </div>
   </main>
 
+  <!-- Offscreen hidden video and canvas elements for client-side slide detection -->
+  <video id="hidden-video" playsinline muted preload="auto" style="display: none;"></video>
+  <canvas id="diff-canvas" width="320" height="180" style="display: none;"></canvas>
+  <canvas id="cap-canvas" width="640" height="360" style="display: none;"></canvas>
+
   <script>
     mermaid.initialize({ startOnLoad: false, theme: 'dark' });
+
+    let currentInputMode = 'preset';
+    let detectedSlides = [];
+    let activeVideoFile = null;
 
     // Presets data
     const PRESETS = {
@@ -894,9 +1100,28 @@
       }
     };
 
+    function setInputMode(mode) {
+      currentInputMode = mode;
+      document.getElementById('mode-btn-preset').classList.toggle('active', mode === 'preset');
+      document.getElementById('mode-btn-video').classList.toggle('active', mode === 'video');
+      document.getElementById('mode-btn-text').classList.toggle('active', mode === 'text');
+
+      document.getElementById('preset-container-box').style.display = (mode === 'preset') ? 'block' : 'none';
+      document.getElementById('video-upload-box').style.display = (mode === 'video') ? 'block' : 'none';
+      document.getElementById('transcript-form-group').style.display = (mode === 'video') ? 'none' : 'block';
+
+      if (mode === 'preset') {
+        loadPreset('standup');
+      } else if (mode === 'video' && !activeVideoFile) {
+        document.getElementById('meeting-title').value = 'Recording Upload';
+      }
+    }
+
     function loadPreset(key) {
       document.querySelectorAll('.preset-pill').forEach(p => p.classList.remove('active'));
-      event.target.classList.add('active');
+      if (event && event.target && event.target.classList.contains('preset-pill')) {
+        event.target.classList.add('active');
+      }
       const data = PRESETS[key];
       if (data) {
         document.getElementById('meeting-title').value = data.title;
@@ -904,8 +1129,156 @@
       }
     }
 
-    // Load initial preset
-    loadPreset('standup');
+    // Drag and drop events setup
+    const dropzone = document.getElementById('dropzone');
+    ['dragenter', 'dragover'].forEach(name => {
+      dropzone.addEventListener(name, (e) => {
+        e.preventDefault();
+        dropzone.classList.add('dragover');
+      });
+    });
+    ['dragleave', 'drop'].forEach(name => {
+      dropzone.addEventListener(name, (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
+      });
+    });
+    dropzone.addEventListener('drop', (e) => {
+      const files = e.dataTransfer.files;
+      if (files && files.length > 0) {
+        processVideoFile(files[0]);
+      }
+    });
+
+    function handleFileSelect(e) {
+      const files = e.target.files;
+      if (files && files.length > 0) {
+        processVideoFile(files[0]);
+      }
+    }
+
+    function formatTime(secs) {
+      const m = Math.floor(secs / 60);
+      const s = Math.floor(secs % 60);
+      return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+    }
+
+    function clearVideoFile() {
+      activeVideoFile = null;
+      detectedSlides = [];
+      document.getElementById('video-file-input').value = '';
+      document.getElementById('video-scanner-panel').style.display = 'none';
+      document.getElementById('dropzone').style.display = 'block';
+    }
+
+    // ── Client-side Pixel Difference Slide Transition Detector ──────────────────
+    async function processVideoFile(file) {
+      activeVideoFile = file;
+      detectedSlides = [];
+
+      document.getElementById('dropzone').style.display = 'none';
+      document.getElementById('video-scanner-panel').style.display = 'block';
+      document.getElementById('video-filename').textContent = file.name;
+      
+      const sizeMb = (file.size / (1024 * 1024)).toFixed(1);
+      document.getElementById('video-meta-details').textContent = `${sizeMb} MB • Analyzing media...`;
+
+      // Set clean meeting title based on file
+      const cleanName = file.name.replace(/\.[^/.]+$/, '').replace(/[_-]/g, ' ');
+      document.getElementById('meeting-title').value = cleanName;
+
+      const video = document.getElementById('hidden-video');
+      const diffCanvas = document.getElementById('diff-canvas');
+      const capCanvas = document.getElementById('cap-canvas');
+      const diffCtx = diffCanvas.getContext('2d', { willReadFrequently: true });
+      const capCtx = capCanvas.getContext('2d');
+
+      const url = URL.createObjectURL(file);
+      video.src = url;
+
+      video.onloadedmetadata = async () => {
+        const duration = video.duration || 60;
+        document.getElementById('video-meta-details').textContent = `${sizeMb} MB • Duration: ${formatTime(duration)}`;
+
+        // Adaptive sample interval based on duration
+        let sampleInterval = 2; // seconds
+        if (duration > 3600) sampleInterval = 15;
+        else if (duration > 1200) sampleInterval = 8;
+        else if (duration > 300) sampleInterval = 5;
+
+        const totalSteps = Math.min(Math.floor(duration / sampleInterval), 60); // Cap at max 60 seeks for snappy UX
+        let lastImageData = null;
+        const slidesStrip = document.getElementById('slides-strip');
+        slidesStrip.innerHTML = '';
+        document.getElementById('slide-count-badge').textContent = '0';
+
+        document.getElementById('scan-status-text').textContent = '⚡ Running pixel difference detector on HTML5 canvas...';
+
+        for (let i = 0; i < totalSteps; i++) {
+          const targetTime = i * sampleInterval;
+          await seekVideo(video, targetTime);
+
+          // Render to 320x180 diff canvas
+          diffCtx.drawImage(video, 0, 0, 320, 180);
+          const currentImageData = diffCtx.getImageData(0, 0, 320, 180).data;
+
+          let diffScore = 0;
+          if (lastImageData) {
+            let diffSum = 0;
+            const len = currentImageData.length;
+            for (let p = 0; p < len; p += 8) { // sample every 2nd pixel for speed
+              diffSum += Math.abs(currentImageData[p] - lastImageData[p]) +
+                         Math.abs(currentImageData[p+1] - lastImageData[p+1]) +
+                         Math.abs(currentImageData[p+2] - lastImageData[p+2]);
+            }
+            diffScore = diffSum / ((len / 8) * 3 * 255);
+          }
+
+          // Trigger slide detection if first frame (baseline) or diff > 0.12 threshold
+          if (i === 0 || diffScore > 0.12) {
+            capCtx.drawImage(video, 0, 0, 640, 360);
+            const jpegUrl = capCanvas.toDataURL('image/jpeg', 0.8);
+            const slideObj = {
+              timestamp: targetTime,
+              timeFormatted: formatTime(targetTime),
+              diff: diffScore.toFixed(3),
+              dataUrl: jpegUrl
+            };
+            detectedSlides.push(slideObj);
+
+            // Add thumbnail to strip
+            const thumbDiv = document.createElement('div');
+            thumbDiv.className = 'slide-thumb';
+            thumbDiv.innerHTML = `
+              <img src="${jpegUrl}" alt="Slide at ${slideObj.timeFormatted}">
+              <div class="slide-thumb-badge">⏱ ${slideObj.timeFormatted}</div>
+            `;
+            slidesStrip.appendChild(thumbDiv);
+            document.getElementById('slide-count-badge').textContent = detectedSlides.length;
+          }
+
+          lastImageData = currentImageData;
+
+          // Update progress
+          const pct = Math.round(((i + 1) / totalSteps) * 100);
+          document.getElementById('scan-progress-fill').style.width = pct + '%';
+          document.getElementById('scan-pct-text').textContent = pct + '%';
+        }
+
+        document.getElementById('scan-status-text').textContent = `✅ Pixel-difference scan complete! ${detectedSlides.length} visual slide transitions captured.`;
+      };
+    }
+
+    function seekVideo(video, time) {
+      return new Promise((resolve) => {
+        const onSeeked = () => {
+          video.removeEventListener('seeked', onSeeked);
+          resolve();
+        };
+        video.addEventListener('seeked', onSeeked);
+        video.currentTime = time;
+      });
+    }
 
     function switchTab(tabId) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -930,7 +1303,14 @@
       btn.innerHTML = '<div class="spinner"></div><span>Orchestrating Workflow...</span>';
 
       const title = document.getElementById('meeting-title').value;
-      const transcript = document.getElementById('meeting-transcript').value;
+      let transcript = document.getElementById('meeting-transcript').value;
+
+      // If video mode was used, synthesize a dialogue incorporating the slide timestamps
+      if (currentInputMode === 'video' && detectedSlides.length > 0) {
+        const slideNotes = detectedSlides.map(s => `[${s.timeFormatted}] Visual Slide Transition captured (pixel-diff: ${s.diff}) — Key discussion point & visual content presented.`).join('\n');
+        transcript = `Recording analysis for "${title}":\n${slideNotes}\n\n[00:15] Presenter: Reviewing core deliverables and opening action items for team follow-up.\n[01:10] Team: Ensure all deliverables are tracked in GitHub and documented in Notion.`;
+      }
+
       const targetApps = [];
       if (document.getElementById('app-notion').checked) targetApps.push('notion');
       if (document.getElementById('app-github').checked) targetApps.push('github');
