@@ -40,6 +40,17 @@ app.add_middleware(
 app.include_router(api_router, prefix="/api")
 app.include_router(api_router)
 
+from pathlib import Path
+from fastapi.responses import HTMLResponse
+
+@app.get("/", response_class=HTMLResponse)
+async def serve_dashboard():
+    """Serve the built-in InsightAgent Web Dashboard."""
+    html_path = Path(__file__).resolve().parent / "static" / "index.html"
+    if html_path.exists():
+        return HTMLResponse(content=html_path.read_text(encoding="utf-8"))
+    return HTMLResponse(content="<h1>InsightAgent API</h1><p>Visit <a href='/docs'>/docs</a> for API documentation.</p>")
+
 
 async def run_demo():
     """Run a quick terminal demonstration."""
